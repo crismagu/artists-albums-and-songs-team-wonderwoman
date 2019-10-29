@@ -1,5 +1,5 @@
-const Artist = require('../../models/Artist');
-const artistService = require('../../service/artist-service');
+const Artist = require('../models/Artist');
+const artistService = require('../service/artist-service');
 
 module.exports = {
     addNewArtist(req, res) {
