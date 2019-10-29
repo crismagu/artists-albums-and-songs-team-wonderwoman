@@ -1,21 +1,19 @@
 const mongoose = require("mongoose");
 const Artist = require('./Artist');
 const Album = require('./Album');
+const Comment = require('./Comment');
 
 const Song = mongoose.model(
     "Songs",
-    new mongoose.Schema({ 
+    new mongoose.Schema(
+      { 
       title: String, 
       duration: Number,
-      link: String, })
+      link: String,
+      comments: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}  ] 
+      })
   );
   
-  const modelThree = new Artist({ title: "Formation", duration: "3:26", link: "https://youtu.be/WDZJPJV__bQ" });
-  
-  modelThree.save((error, savedModelThree) => {
-    if (error) return console.error(error);
-    console.log(savedModelThree.title, savedModelThree.duration, savedModelThree.link);
-  });
 
   module.exports = Song;
   

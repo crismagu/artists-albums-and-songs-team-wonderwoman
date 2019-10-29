@@ -12,9 +12,9 @@ const Album = mongoose.model(
   
   const queenB = new Album({ title: "Lemonade", genre: "RnB", year: 2016 });
   
-  queenB.save((error, savedModelThree) => {
+  queenB.save((error, savedQueenB) => {
     if (error) return console.error(error);
-    console.log(savedModelThree.title, savedModelThree.genre, savedModelThree.year, savedModelThree.songs);
+    console.log(savedQueenB.title, savedQueenB.genre, savedQueenB.year, savedQueenB.songs);
   });
 
   module.exports = Album;
