@@ -8,7 +8,7 @@ const Song = mongoose.model(
     new mongoose.Schema(
       { 
       title: String, 
-      duration: Number,
+      duration: String,
       link: String,
       comments: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}  ] 
       })

@@ -4,5 +4,5 @@ var artistController = require('../controllers/artist-controller');
 
 // Get All Artists
 router.get("/", artistController.getAllArtist);
-
+router.post("/:name", artistController.addNewArtist);
 module.exports = router;
