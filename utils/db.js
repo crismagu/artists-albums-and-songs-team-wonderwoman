@@ -6,6 +6,14 @@ mongoose.connect(
 );
 
 const db = mongoose.connection;
+
+db.collection("artist").findOne({ name: "Beyonce" })
+  
+ 
+
+
+
+
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function() {
   console.log("Connected to the DB!");
