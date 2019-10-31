@@ -3,8 +3,11 @@ const albumService = require('../service/album-service');
 
 module.exports = {
     async addNewAlbum(req, res) {
-        const {title, genre, year, songs} = req.body;
-        const newAlbum = await albumService.addAlbum(name);
+        const artistId = req.body.artistId;
+        const {title, genre, year} = req.body;
+        const album = {title: title, genre: genre, year: year};
+        const newAlbum = await albumService.addAlbum(album, artistId);
+        res.json({newAlbum});
     },
     async getAllAlbums(req, res) {
         res.json(await albumService.findAll());

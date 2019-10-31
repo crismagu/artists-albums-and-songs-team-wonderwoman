@@ -3,7 +3,7 @@ const Artist = require('../models/Artist');
 module.exports = {
     async save(artist) {
         try {
-            const newArtist = new Artist({artist})
+            const newArtist = new Artist(artist)
             await newArtist.save();
             return newArtist;
         } catch (err) {

@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var artistController = require('../controllers/artist-controller');
+const express = require('express');
+const router = express.Router();
+const artistController = require('../controllers/artist-controller');
 
-// Get All Artists
-router.get("/", artistController.getAllArtist);
-router.post("/:name", artistController.addNewArtist);
+// GET All Artists
+router.get("/", artistController.findAll);
+router.post("/", artistController.addNewArtist);
 module.exports = router;

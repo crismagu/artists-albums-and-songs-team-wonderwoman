@@ -5,8 +5,9 @@ class ArtistController {
     
     static async addNewArtist(req, res) {
         try {
-            const artistName = req.body.name;
-            const newArtist = await artistService.save({name: artistName});
+            console.log(req.body)
+            // const artist = {name:req.body.name}
+            const newArtist = await artistService.save({name: req.body.name});
             res.json({newArtist})
         } catch (error) {
             res.json({error});
@@ -15,7 +16,7 @@ class ArtistController {
 
     static async findAll(req, res) {
         try {
-            const artists = artistService.findAll()
+            const artists = await artistService.findAll()
             res.json({artists})
         } catch (error) {
             res.json({error})
@@ -32,3 +33,5 @@ class ArtistController {
         }
     }
 };
+
+module.exports = ArtistController;

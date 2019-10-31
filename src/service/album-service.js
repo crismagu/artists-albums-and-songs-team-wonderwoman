@@ -1,13 +1,17 @@
-const Album = require('../models/Artist');
+const Album = require('../models/Album');
+const Artist = require('../models/Artist');
 
 module.exports = {
     
-    async addAlbum() {
-        const newAlbum = new Album(new Album(name));
-        newAlbum.save();
+    async addAlbum(albumObject, artistId) {
+        const newAlbum = new Album(albumObject);
+        const artist = await Artist.findById(artistId);
+        await artist.albums.push(newAlbum)
+        const response = await artist.save();
+        return response;
     },
     async findAll() {
-        const allAlbum = await Album.find();
+        const allAlbum = await Album.find().populate("albums").exec();
         return allAlbum;
         // replace with async + await
     },
