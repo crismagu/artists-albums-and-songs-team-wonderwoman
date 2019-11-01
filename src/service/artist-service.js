@@ -27,8 +27,11 @@ module.exports = {
             return error
         }
     }, 
-    async updateArtist(artistId, artistUpdate={}){
-        const updatedArtist = await Artist.findByIdAndUpdate(artistId, artistUpdate)
-        return updatedArtist
+    async updateArtist(artistId){
+        const updateArtist = await Artist.findById(artistId);
+        return updateArtist;
+        // artistUpdate={}
+        // const updatedArtist = await Artist.findByIdAndUpdate(artistId, artistUpdate)
+        // return updatedArtist
     }
 };
