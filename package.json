@@ -14,5 +14,8 @@
     "morgan": "~1.9.1",
     "node": "^12.13.0",
     "nodemon": "^1.19.4"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
 }

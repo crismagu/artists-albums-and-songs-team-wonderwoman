@@ -26,5 +26,9 @@ module.exports = {
         } catch (error) {
             return error
         }
+    }, 
+    async updateArtist(artistId, artistUpdate={}){
+        const updatedArtist = await Artist.findByIdAndUpdate(artistId, artistUpdate)
+        return updatedArtist
     }
 };

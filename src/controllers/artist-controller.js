@@ -31,6 +31,21 @@ class ArtistController {
         } catch (error) {
             res.json({error});
         }
+    } 
+    static async artistUpdate(req, res){
+        try{
+            const artistId = req.params.id;
+            if(req.body.name != null){
+                artistUpdates = { name: req.body.name}
+                artistService.updateArtist(artistId, artistUpdates)
+                res.json(await artistToChange.save())
+            } else {
+                res.json({message: "Nope"})
+            }
+        }catch(err){
+            res.json({message: err.message})
+        }
+        
     }
 };
 
