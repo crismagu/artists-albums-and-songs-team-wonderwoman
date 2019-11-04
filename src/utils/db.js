@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 mongoose.connect(
   "mongodb+srv://userman:hunter42@cluster0-ggjhx.mongodb.net/test?retryWrites=true&w=majority",
-  { useNewUrlParser: true }
+  { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
 const db = mongoose.connection;
