@@ -16,9 +16,14 @@ module.exports = {
         // })
     }, 
     async findOne(req, res){
-        const albumId = req.params.id
+        const albumId = req.params.id;
         const requestedAlbum = await albumService.findAlbum(albumId);
         res.json(requestedAlbum);
+    },
+    async deleteOne(req, res){
+        const albumId = req.params.id;
+        const albumToDelete = await albumService.deleteAlbum(albumId);
+        res.json(albumToDelete);
     }
     
 };

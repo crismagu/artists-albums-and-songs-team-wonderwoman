@@ -16,8 +16,12 @@ module.exports = {
         // replace with async + await
     },
   async findAlbum(albumId) {
-      const albumRequest =  await Album.find(albumId); 
-      return albumRequest;
+        const albumRequest =  await Album.find(albumId); 
+        return albumRequest;
+    },
+    async deleteAlbum(albumId) {
+        const albumToDelete = await Album.deleteOne(albumId);
+        return albumToDelete;
     }
 };
 
