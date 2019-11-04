@@ -1,5 +1,6 @@
 const artistController = require('../artist-controller');
 const artistService = require('../../service/artist-service');
+const mongoose = require('mongoose');
 
 describe("artistController", () => {
     test("addNewArtist should be called once", async () => {

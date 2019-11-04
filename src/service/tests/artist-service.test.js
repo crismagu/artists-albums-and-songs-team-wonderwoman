@@ -1,5 +1,7 @@
 const artistController = require('../../controllers/artist-controller');
+const artistService = require('../artist-service');
 const artist = require('../../models/Artist');
+const mongoose = require('mongoose');
 
 describe("findAll", () => {
     test("should call findAll from mongoose", () => {
