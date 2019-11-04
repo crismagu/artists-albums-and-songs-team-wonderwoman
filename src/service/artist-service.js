@@ -37,7 +37,16 @@ module.exports = {
     }, 
     async deleteArtist(artistId){
         try{
-            const artistToDelete = await Artist.findByIdAndRemove(artistId)
+            const artistToDelete = await Artist.findById(artistId);
+            await artistToDelete.songs.pullAll();
+            await artistToDelete.remove();
+            const response = artistToDelete.save();
+            return response;
+            // const artistToDelete = await Artist.findByIdAndRemove(artistId);
+            // return artistToDelete;
+        }catch(err){
+            console.log(err)
+
         }
     }
 };

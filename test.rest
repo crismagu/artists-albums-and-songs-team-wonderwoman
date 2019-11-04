@@ -1,0 +1,1 @@
+DELETE  http://localhost:3000/artists/5dbb284fa6c1fd0c10306ffd
