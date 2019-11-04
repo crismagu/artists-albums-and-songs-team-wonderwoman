@@ -27,11 +27,17 @@ module.exports = {
             return error
         }
     }, 
-    async updateArtist(artistId){
-        const updateArtist = await Artist.findById(artistId);
-        return updateArtist;
-        // artistUpdate={}
-        // const updatedArtist = await Artist.findByIdAndUpdate(artistId, artistUpdate)
-        // return updatedArtist
+    async updateArtist(artistId, artistUpdates={}){
+        try {
+            const updateArtist = await Artist.findByIdAndUpdate(artistId, artistUpdates, {new: true});
+            return updateArtist;
+        } catch (err) {
+            return err;
+        }
+    }, 
+    async deleteArtist(artistId){
+        try{
+            const artistToDelete = await Artist.findByIdAndRemove(artistId)
+        }
     }
 };

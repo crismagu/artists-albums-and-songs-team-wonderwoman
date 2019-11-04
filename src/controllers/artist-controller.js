@@ -33,6 +33,14 @@ class ArtistController {
         }
     } 
     static async artistUpdate(req, res){
+        try {
+            const artistId = req.params.id;
+            const updatedArtist = await artistService.updateArtist(artistId, req.body);
+            res.json({updatedArtist});
+        } catch (error) {
+            res.json(error);
+        }
+
         // Working Code
         // try{
         //     const artistId = req.params.id;
