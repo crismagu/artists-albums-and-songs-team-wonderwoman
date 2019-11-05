@@ -5,11 +5,17 @@ const albumController = require('../controllers/album-controller');
 //GET All Albums
 router.get("/", albumController.getAllAlbums);
 
+//GET One Album
+router.get(":id", albumController.findOne);
+
 //POST New Albums
 router.post("/", albumController.addNewAlbum);
 
-//DELETE Album
+//PATCH Updated Album
+router.patch("/:id", albumController.albumUpdate);
+//?page=2&limit=3
 
-router.delete("/delete", albumController.deleteOne);
+//DELETE Album
+router.delete("/:id", albumController.deleteOne);
 
 module.exports = router;

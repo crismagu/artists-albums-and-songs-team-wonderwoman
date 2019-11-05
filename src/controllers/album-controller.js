@@ -3,27 +3,52 @@ const albumService = require('../service/album-service');
 
 module.exports = {
     async addNewAlbum(req, res) {
-        const artistId = req.body.artistId;
-        const {title, genre, year} = req.body;
-        const album = {title: title, genre: genre, year: year};
-        const newAlbum = await albumService.addAlbum(album, artistId);
-        res.json({newAlbum});
+        try {
+            const artistId = req.body.artistId;
+            const {title, genre, year} = req.body;
+            const album = {title: title, genre: genre, year: year};
+            const newAlbum = await albumService.addAlbum(album, artistId);
+            res.json({newAlbum}); 
+        } catch {
+            re.json({error});
+        }
+        
     },
-    async getAllAlbums(req, res) {
-        res.json(await albumService.findAll());
-        // const albumService = findAll(album => {
-        //     res.json(album)
-        // })
-    }, 
-    async findOne(req, res){
-        const albumId = req.params.id;
-        const requestedAlbum = await albumService.findAlbum(albumId);
-        res.json(requestedAlbum);
+    async albumUpdate(req, res) {
+        try {
+            const albumId = req.params.id;
+            const updatedAlbum = await albumService.updateAlbum(albumId, req.body);
+            res.json({updatedAlbum});
+        }   catch {
+            res.json({error});
+
+        }
     },
     async deleteOne(req, res){
-        const albumId = req.params.id;
-        const albumToDelete = await albumService.deleteAlbum(albumId);
-        res.json(albumToDelete);
-    }
+        try {
+            const albumId = req.params.id;
+            const artistId = req.body.artistId;
+            const albumToDelete = await albumService.deleteAlbum(albumId, artistId);
+            res.json({albumToDelete});
+        } catch {
+            res.json({error});
+        }
+    },
+    async findOne(req, res){
+        try {
+            const albumId = req.params.id;
+            const requestedAlbum = await albumService.findAlbum(albumId);
+            res.json({requestedAlbum});
+        } catch {
+            res.json({error});
+        }
+    },
+    async getAllAlbums(req, res) {
+        try {
+            res.json(await albumService.findAll());
+        } catch {
+            res.json({error});
+        }
     
+    }, 
 };

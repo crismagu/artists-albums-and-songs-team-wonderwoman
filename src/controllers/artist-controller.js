@@ -38,45 +38,20 @@ class ArtistController {
             const updatedArtist = await artistService.updateArtist(artistId, req.body);
             res.json({updatedArtist});
         } catch (error) {
-            res.json(error);
+            res.json({error});
         }
-
-        // Working Code
-        // try{
-        //     const artistId = req.params.id;
-        //     const artistToUpdate = await artistService.updateArtist(artistId);
-        //     artistToUpdate.name = req.body.name
-        //     console.log(artistToUpdate)
-        //     const result = await artistToUpdate.save();
-        //     res.json(result)
-        // }
-        // catch(err){
-        //     res.json({message:err.message})
-        // }
-        // End Working Code
-
-        // try{
-        //     const artistId = req.params.id;
-        //     if(req.body.name != null){
-        //         const artistUpdates = { name: req.body.name}
-        //         const artistToChange = await artistService.updateArtist(artistId, artistUpdates)
-        //         res.json(await artistToChange.save())
-        //     } else {
-        //         res.json({message: "Nope"})
-        //     }
-        // }catch(err){
-        //     res.json({message: err.message})
-        // }
-       
-            // const artistName = req.body.name;
-            // if(artistName != null){
-            //     artistToUpdate.name = artistName;
-            // }else{
-            //     res.json("NO")
-            // }
-
-        
     }
+
+    static async artistDeleteById(req, res) {
+        try {
+            const artistId = req.params.id;
+            const deletedArtist = await artistService.deleteArtist(artistId);
+            res.json({deletedArtist})
+        } catch (err) {
+            res.json({err})
+        }
+    }
+
 };
 
 module.exports = ArtistController;
