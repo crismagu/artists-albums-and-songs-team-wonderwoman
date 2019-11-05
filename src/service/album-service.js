@@ -14,7 +14,7 @@ module.exports = {
     async deleteAlbum(albumId, artistId) {
         // Not deleting album from artist
         const artist = await Artist.findById(artistId);
-        await artist.albums.pull(albumId);
+        await artist.albums.pull({_id: albumId});
         await artist.save();
         const albumToDelete = await Album.findByIdAndDelete(albumId);
         return albumToDelete;
