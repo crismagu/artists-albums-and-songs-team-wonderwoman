@@ -34,20 +34,20 @@ module.exports = {
         const updatedTag= await Tag.findByIdAndUpdate(tagId, tagUpdates, {new: true});
         return updatedTag;
     }, 
-    async deleteTags(tagId){
-        const tagToDelete = await Tag.findById(tagId)
-        const removed = tagToDelete.comments;
-        const newArry = [];
-        removed.forEach(item => {
-            newArry.push(mongoose.Types.ObjectId(item));    
-        });
-        newArry.forEach(item =>{
-            let cId = Comment.findById(item);
-            await cId.tags.pull({_id: item });
+    // async deleteTags(tagId){
+    //     const tagToDelete = await Tag.findById(tagId)
+    //     const removed = tagToDelete.comments;
+    //     const newArry = [];
+    //     removed.forEach(item => {
+    //         newArry.push(mongoose.Types.ObjectId(item));    
+    //     });
+    //     newArry.forEach(item =>{
+    //         let cId = Comment.findById(item);
+    //         await cId.tags.pull({_id: item });
 
-        })
-        const result = newArry
-        return result;
-    }
+    //     })
+    //     const result = newArry
+    //     return result;
+    // }
 
 }

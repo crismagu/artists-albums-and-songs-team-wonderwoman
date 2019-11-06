@@ -27,8 +27,8 @@ module.exports = {
         const songRequest =  await Song.find(songId); 
         return songRequest;
     },
-    async updateSong(songId) {
-        const updatedSong = await Song.findByIdAndUpdate(songId, albumUpdates, {new: true});
+    async updateSong(songId, songUpdates = {} ) {
+        const updatedSong = await Song.findByIdAndUpdate(songId, songUpdates, {new: true});
         return updatedSong;
     }, 
     async removeMany(songs){
