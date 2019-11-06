@@ -1,5 +1,6 @@
 const Album = require('../models/Album');
 const Artist = require('../models/Artist');
+const mongoose = require('mongoose');
 
 module.exports = {
     
@@ -14,7 +15,7 @@ module.exports = {
     async deleteAlbum(albumId, artistId) {
         // Not deleting album from artist
         const artist = await Artist.findById(artistId);
-        await artist.albums.pull(albumId);
+        await artist.albums.pull({_id: albumId});
         await artist.save();
         const albumToDelete = await Album.findByIdAndDelete(albumId);
         return albumToDelete;
@@ -28,9 +29,19 @@ module.exports = {
         const albumRequest =  await Album.find(albumId); 
         return albumRequest;
     },
-    async updateAlbum(albumId) {
+    async updateAlbum(albumId, albumUpdates) {
         const updateAlbum = await Album.findByIdAndUpdate(albumId, albumUpdates, {new: true});
         return updateAlbum;
+    }, 
+    
+    async removeMany(albums){
+        const removed = albums;
+        const newArry = [];
+        removed.forEach(item => {
+            newArry.push(mongoose.Types.ObjectId(item));    
+        });
+        const result  = await Album.remove( { _id : { $in:newArry}})
+        return result;
     }
     
 };

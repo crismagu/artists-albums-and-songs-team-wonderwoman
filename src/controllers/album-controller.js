@@ -30,8 +30,8 @@ module.exports = {
             const artistId = req.body.artistId;
             const albumToDelete = await albumService.deleteAlbum(albumId, artistId);
             res.json({albumToDelete});
-        } catch {
-            res.json({error});
+        } catch(error) {
+            res.json({message: error.message});
         }
     },
     async findOne(req, res){

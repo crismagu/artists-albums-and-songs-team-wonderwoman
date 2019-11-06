@@ -1,4 +1,5 @@
 const Artist = require('../models/Artist');
+const albumService = require("../service/album-service");
 
 module.exports = {
     async save(artist) {
@@ -38,8 +39,11 @@ module.exports = {
     async deleteArtist(artistId){
         try{
             const artistToDelete = await Artist.findById(artistId);
-            await artistToDelete.songs.pullAll();
+            // await artistToDelete.songs.pullAll();
+            const albumArray = artistToDelete.albums;
+            await albumService.removeMany(albumArray);
             await artistToDelete.remove();
+
             const response = artistToDelete.save();
             return response;
             // const artistToDelete = await Artist.findByIdAndRemove(artistId);
