@@ -3,20 +3,20 @@ const router = express.Router();
 const tagController = require('../controllers/tag-controller');
 // Needs updated
 
-//GET All Songs
-router.get("/", tagController.getAllSongs);
+//GET All Tags
+router.get("/", tagController.getAllTags);
 
-//GET One Song
+//GET One Tag
 router.get(":id", tagController.findOne);
 
-//POST New Songs
-router.post("/", tagController.addNewSong);
+//POST New Tags
+router.post("/", tagController.addNewTag);
 
-//PATCH Updated Song
-router.patch("/:id", tagController.songUpdate);
+//PATCH Updated Tag
+router.patch("/:id", tagController.tagUpdate);
 //?page=2&limit=3
 
-//DELETE Song
+//DELETE Tag
 router.delete("/:id", tagController.deleteOne);
 
 module.exports = router;

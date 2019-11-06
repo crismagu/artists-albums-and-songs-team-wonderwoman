@@ -33,8 +33,12 @@ module.exports = {
     async updateTag(tagId, tagUpdates){
         const updatedTag= await Tag.findByIdAndUpdate(tagId, tagUpdates, {new: true});
         return updatedTag;
-    }, 
-    // async deleteTags(tagId){
+    }
+   
+
+}
+
+// async deleteTags(tagId){
     //     const tagToDelete = await Tag.findById(tagId)
     //     const removed = tagToDelete.comments;
     //     const newArry = [];
@@ -49,5 +53,3 @@ module.exports = {
     //     const result = newArry
     //     return result;
     // }
-
-}
