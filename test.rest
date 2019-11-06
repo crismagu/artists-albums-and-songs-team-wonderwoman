@@ -1,1 +1,1 @@
-DELETE  http://localhost:3000/artists/5dbb284fa6c1fd0c10306ffd
+DELETE  http://localhost:3000/artists/5db9d88639fa078e7c36e219
