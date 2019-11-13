@@ -8,9 +8,9 @@ module.exports = {
             const song = {title: title, duration: duration, link: link};
             const newSong = await songService.addSong(song, albumId);
             res.json(newSong); 
-        } catch(err) {
-            console.log(err)
-            res.json({message: err.message});
+        } catch(error) {
+            console.log(error)
+            res.json({message: error.message});
         }    
     },
 
@@ -19,7 +19,7 @@ module.exports = {
             const songId = req.params.id;
             const updatedSong = await songService.updateSong(songId, req.body);
             res.json({updatedSong});
-        }   catch {
+        }   catch(error) {
             res.json({error});
         }
     },
@@ -40,7 +40,7 @@ module.exports = {
             const songId = req.params.id;
             const requestedSong = await songService.findSong(songId);
             res.json({requestedSong});
-        } catch {
+        } catch(song) {
             res.json({error});
         }
     },
@@ -49,7 +49,7 @@ module.exports = {
         try {
             const allSongs = await songService.findAll();
             res.json({allSongs});
-        } catch {
+        } catch(error) {
             res.json({error});
         }
     }, 

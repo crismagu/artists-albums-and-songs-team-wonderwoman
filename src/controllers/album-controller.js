@@ -9,8 +9,8 @@ module.exports = {
             const album = {title: title, genre: genre, year: year};
             const newAlbum = await albumService.addAlbum(album, artistId);
             res.json({newAlbum}); 
-        } catch {
-            re.json({error});
+        } catch(error) {
+            res.json({error});
         }
         
     },
@@ -19,7 +19,7 @@ module.exports = {
             const albumId = req.params.id;
             const updatedAlbum = await albumService.updateAlbum(albumId, req.body);
             res.json({updatedAlbum});
-        }   catch {
+        }   catch(error) {
             res.json({error});
 
         }
@@ -39,14 +39,14 @@ module.exports = {
             const albumId = req.params.id;
             const requestedAlbum = await albumService.findAlbum(albumId);
             res.json({requestedAlbum});
-        } catch {
+        } catch(error) {
             res.json({error});
         }
     },
     async getAllAlbums(req, res) {
         try {
             res.json(await albumService.findAll());
-        } catch {
+        } catch(error) {
             res.json({error});
         }
     
