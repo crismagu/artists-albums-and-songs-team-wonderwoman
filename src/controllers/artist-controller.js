@@ -25,7 +25,7 @@ class ArtistController {
 
     static async findArtistById(req, res) {
         try {
-            const { id } = req.body;
+            const { id } = req.params;
             const foundArtist = await artistService.findById(id);
             res.json({foundArtist})
         } catch (error) {

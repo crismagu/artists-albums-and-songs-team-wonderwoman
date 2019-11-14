@@ -1,5 +1,4 @@
 const songService = require('../service/song-service');
-const Song = require('./Song');
 
 module.exports = {
     async addNewSong(req, res) {

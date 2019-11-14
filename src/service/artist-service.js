@@ -14,7 +14,7 @@ module.exports = {
     },
     async findAll() {
         try {
-            const artists = await Artist.find();
+            const artists = await Artist.find().populate('albums').exec();
             return artists
         } catch (error) {
             return error
@@ -22,7 +22,7 @@ module.exports = {
     },
     async findById(id) {
         try {
-            const artist = await Artist.findById(id);
+            const artist = await Artist.findById(id).populate('albums').exec();
             return artist
         } catch (error) {
             return error

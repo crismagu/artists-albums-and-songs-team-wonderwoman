@@ -26,7 +26,7 @@ module.exports = {
         // replace with async + await
     },
     async findAlbum(albumId) {
-        const albumRequest =  await Album.find(albumId); 
+        const albumRequest =  await Album.find(albumId).populate('songs').exec(); 
         return albumRequest;
     },
     async updateAlbum(albumId, albumUpdates) {

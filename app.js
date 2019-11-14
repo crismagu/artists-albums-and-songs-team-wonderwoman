@@ -8,6 +8,7 @@ const db = require("./src/utils/db");
 // var indexRouter = require('./src/routes/index-router');
 const artistRouter = require("./src/routes/artist-router");
 const albumRouter = require("./src/routes/album-router");
+const songRouter = require('./src/routes/song-router');
 
 var app = express();
 app.use(cors());
@@ -21,5 +22,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // app.use('/', indexRouter);
 app.use("/artists", artistRouter);
 app.use("/albums", albumRouter);
+app.use("/songs", songRouter);
 
 module.exports = app;

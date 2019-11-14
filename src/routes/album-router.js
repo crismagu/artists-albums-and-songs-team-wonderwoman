@@ -6,7 +6,7 @@ const albumController = require('../controllers/album-controller');
 router.get("/", albumController.getAllAlbums);
 
 //GET One Album
-router.get(":id", albumController.findOne);
+router.get("/:id", albumController.findOne);
 
 //POST New Albums
 router.post("/", albumController.addNewAlbum);

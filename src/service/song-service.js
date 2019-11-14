@@ -5,12 +5,12 @@ const mongoose = require('mongoose');
 
 module.exports = {
     async addSong(songObject, albumId) {
-        const newAlbum = await new Song(albumObject).save();
-        const artist = await Artist.findById(albumId);
-        await artist.albums.push(newAlbum)
-        const response = await artist.save();
+        const newSong = await new Song(songObject).save();
+        const album = await Album.findById(albumId);
+        await album.songs.push(newSong)
+        const response = await album.save();
         console.log(response);
-        return newAlbum;
+        return newSong;
     },
     async deleteSong(songId, albumId) {
         const album = await Album.findById(albumId);
